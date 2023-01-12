@@ -1,1 +1,1 @@
-alu-scripting
+a repository for scripting
