@@ -4,11 +4,6 @@ This module provides functionality for retrieving the number of subscribers for 
 
 The main function provided by this module is number_of_subscribers(subreddit), which takes a subreddit name as input
 and returns the number of subscribers for that subreddit as an integer.
-
-Example usage:
-
-    >>> number_of_subscribers("AskReddit")
-    33000000
 """
 import requests
 
