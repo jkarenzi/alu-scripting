@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-import requests
 """
 This module provides a function for retrieving the number of subscribers for a given subreddit from Reddit's API.
 
@@ -11,7 +9,7 @@ Example usage:
     >>> number_of_subscribers('python')
     2900000
 """
-
+import requests
 
 
 def number_of_subscribers(subreddit):
