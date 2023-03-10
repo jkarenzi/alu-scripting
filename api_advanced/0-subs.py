@@ -1,30 +1,26 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-
-"""Gather data from an API"""
-
+""" Returns the number of subscribers for a given subreddit. """
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """Returns number of subscribers"""
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                      'AppleWebKit/537.36 (KHTML, like Gecko) '
-                      'Chrome/58.0.3029.110 Safari/537.3'
-    }
-    response = requests.get(url, headers=headers)
+    """ Returns the number of subscribers for a given subreddit. """
 
-    if response.status_code != 200:
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    headers = \
+        {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)\
+          AppleWebKit/537.36(KHTML, like Gecko) \
+         Chrome/90.0.4430.93 Safari/537.36'}
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 200:
+        return response.json().get('data').get('subscribers')
+    else:
         return 0
 
-    data = response.json()
-    return data['data']['subscribers']
 
-
-if __name__ == "__main__":
-    subreddit = "AskReddit"
-    subscribers = number_of_subscribers(subreddit)
-    print(f"{subreddit} has {subscribers} subscribers")
+if __name__ == '__main__':
+    print(number_of_subscribers)('programming')
+    print(number_of_subscribers)('not_a_valid_subreddit')
